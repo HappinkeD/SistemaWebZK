@@ -26,7 +26,7 @@ PUERTO_HUELLERO = 4370
 
 # Datos de la DB Biosecurity en el servidor .244
 DB_PARAMS = {
-    "user": "root", 
+    "user": "postgress", 
     "password": "", 
     "host": "192.168.42.244", 
     "port": "5442", 
