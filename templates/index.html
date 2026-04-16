@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistemas HRCV - Multidispositivo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        .navbar-hrcv { background: #004a99; color: white; }
+        .card { border-radius: 12px; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .table-container { max-height: 550px; overflow-y: auto; }
+        .btn-sync { border-radius: 20px; font-size: 0.8rem; }
+    </style>
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-hrcv p-3 mb-4 shadow">
+        <div class="container d-flex justify-content-between">
+            <span class="h4 mb-0"><i class="bi bi-hospital"></i> Hospital Rubén Cruz Vélez</span>
+            <span class="badge bg-info text-dark">Área de Sistemas - Gestión G1</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-md-4">
+                <div class="card p-4 border-start border-success border-5 mb-4">
+                    <h5 class="text-success mb-3"><i class="bi bi-file-earmark-excel"></i> Generar Reporte</h5>
+                    <form action="/descargar_asistencia" method="GET">
+                        <div class="mb-3">
+                            <label class="small fw-bold">1. Seleccionar Biométrico:</label>
+                            <select name="ip" class="form-select shadow-sm" required>
+                                {% for d in dispositivos %}
+                                <option value="{{ d.ip }}">{{ d.nombre }} ({{ d.ip }})</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="small fw-bold">2. Funcionario (Opcional):</label>
+                            <select name="pin" class="form-select shadow-sm">
+                                <option value="all">-- Todos los Registros --</option>
+                                {% for p in personal %}
+                                <option value="{{ p.pin }}">{{ p.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100 shadow-sm">
+                            <i class="bi bi-download"></i> Descargar CSV
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0"><i class="bi bi-people"></i> Personal y Sincronización</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-container">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead class="table-light sticky-top">
+                                    <tr>
+                                        <th class="ps-4">PIN</th>
+                                        <th>Nombre</th>
+                                        <th class="text-end pe-4">Enviar Huella a...</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for p in personal %}
+                                    <tr>
+                                        <td class="ps-4 fw-bold text-primary">{{ p.pin }}</td>
+                                        <td class="text-uppercase small">{{ p.name }}</td>
+                                        <td class="text-end pe-4">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-outline-primary btn-sm dropdown-toggle rounded-pill" data-bs-toggle="dropdown">
+                                                    Sincronizar
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    {% for d in dispositivos %}
+                                                    <li><a class="dropdown-item small" href="/sync/{{ d.ip }}/{{ p.pin }}/{{ p.name }}">{{ d.nombre }}</a></li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

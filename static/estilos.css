@@ -1,0 +1,131 @@
+/* --- Variables de Color (Estilo Hospitalario Moderno) --- */
+:root {
+    --primary: #007bff;
+    --secondary: #6c757d;
+    --success: #28a745;
+    --dark-bg: #1e293b;
+    --light-bg: #f8fafc;
+    --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    background-color: var(--light-bg);
+    color: #334155;
+    font-family: 'Inter', -apple-system, sans-serif;
+}
+
+/* --- Barra de Navegación --- */
+.navbar {
+    background: linear-gradient(135deg, #0062cc 0%, #004a99 100%) !important;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+/* --- Tarjetas (Cards) --- */
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.2s ease;
+    margin-bottom: 1.5rem;
+}
+
+.card-header {
+    background-color: white !important;
+    border-bottom: 1px solid #f1f5f9;
+    padding: 1.25rem;
+    border-radius: 12px 12px 0 0 !important;
+}
+
+/* --- Entradas y Botones --- */
+.form-control {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 0.75rem;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+    border-color: var(--primary);
+}
+
+.btn {
+    border-radius: 8px;
+    padding: 0.6rem 1.2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+
+/* --- Tabla de Asistencia --- */
+.table-container {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.table thead th {
+    background-color: #f1f5f9;
+    color: #475569;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 1rem;
+    border: none;
+}
+
+.table tbody td {
+    padding: 1rem;
+    vertical-align: middle;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+/* --- Buscador --- */
+.search-wrapper {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.search-wrapper i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+}
+
+.search-wrapper input {
+    padding-left: 2.75rem;
+    height: 50px;
+    font-size: 1rem;
+    box-shadow: var(--card-shadow);
+}
+
+/* --- Login Page --- */
+.login-body {
+    background: radial-gradient(circle at top left, #007bff, #004a99);
+}
+
+.login-card {
+    border-radius: 20px;
+    padding: 2rem;
+}
