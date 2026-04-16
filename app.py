@@ -28,7 +28,7 @@ PUERTO_HUELLERO = 4370
 DB_PARAMS = {
     "user": "postgress", 
     "password": "", 
-    "host": "192.168.42.244", 
+    "host": "0.0.0.0", 
     "port": "5442", 
     "database": "biosecurity-boot"
 }
